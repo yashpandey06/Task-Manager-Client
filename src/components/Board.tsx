@@ -25,15 +25,15 @@ export default function Board() {
     ? JSON.parse(storedDummyState)
     : [
         {
-          id: "2r2",
+          id: "1",
           title: "Work in Progress",
         },
         {
-          id: "1f",
+          id: "2",
           title: "Tasks",
         },
         {
-          id: "sx9",
+          id: "6",
           title: "Done",
         },
       ];
@@ -58,7 +58,7 @@ export default function Board() {
   async function handleDeleteTask(id: string, author: string) {
     try {
       const token = Cookies.get("auth-token");
-      const url = `https://task-backened-65u3.onrender.com/board/${author}/${id}`;
+      const url = `http://localhost:3000/board/${author}/${id}`;
       const res = await axios.delete(url, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -69,7 +69,6 @@ export default function Board() {
       }
     } catch (err) {
       console.log(err);
-      alert(err);
     }
   }
 
@@ -103,7 +102,7 @@ export default function Board() {
   async function getBoardData() {
     try {
       const token = Cookies.get("auth-token");
-      const url = "https://task-backened-65u3.onrender.com/board";
+      const url = "http://localhost:3000/board";
       const response = await axios.get(url, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -181,10 +180,11 @@ export default function Board() {
       const dummyString = JSON.stringify(newColState);
       localStorage.setItem("dummyState", dummyString);
     }
+    
   }
 
   const fetchData = async () => {
-    const url = "https://task-backened-65u3.onrender.com/kanban";
+    const url = "http://localhost:3000/kanban";
     const token = Cookies.get("auth-token");
 
     if (token) {
@@ -214,7 +214,7 @@ export default function Board() {
           {`Hey `}
           <strong className="text-red-500">{username}</strong>
           {cols.map((item) => (
-            <div key={item.id}>
+            <div>
               {`Currently , there are ${item.tasks.length} tasks  in `}
               <strong className="text-blue-500">{`${item.title.toUpperCase()}`}</strong>
             </div>
@@ -235,19 +235,20 @@ export default function Board() {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="flex md:flex-row flex-col gap-10 p-5 justify-center items-center md:items-start  md:justify-center"
+            className="flex md:flex-row flex-col gap-16 p-5 justify-center items-center md:items-start  md:justify-between lg:fixed"
           >
             {cols.map((item, index) => (
-              <Columns
-                key={item.id}
-                index={index}
-                id={item.id}
-                todosTopic={item.title}
-                tasks={item.tasks}
-                handleDeleteTask={handleDeleteTask}
-                handleAddTask={handleAddTask}
-                title={item.title}
-              />
+              <div key={item.id} className="">
+                <Columns
+                  index={index}
+                  id={item.id}
+                  todosTopic={item.title}
+                  tasks={item.tasks}
+                  handleDeleteTask={handleDeleteTask}
+                  handleAddTask={handleAddTask}
+                  title={item.title}
+                />
+              </div>
             ))}
             {provided.placeholder}
           </div>
