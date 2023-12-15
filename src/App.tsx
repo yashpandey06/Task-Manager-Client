@@ -7,7 +7,7 @@ import Welcome from "./components/Welcome";
 export const App = () => {
  
   return (
-    <div className=" text-white  ">
+    <div className=" text-white ">
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
