@@ -58,7 +58,7 @@ export default function Board() {
   async function handleDeleteTask(id: string, author: string) {
     try {
       const token = Cookies.get("auth-token");
-      const url = `https://task-backened-65u3.onrender.com/board/${author}/${id}`;
+      const url = `http://localhost:3000/board/${author}/${id}`;
       const res = await axios.delete(url, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -102,7 +102,7 @@ export default function Board() {
   async function getBoardData() {
     try {
       const token = Cookies.get("auth-token");
-      const url = "https://task-backened-65u3.onrender.com/board";
+      const url = "http://localhost:3000/board";
       const response = await axios.get(url, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -184,7 +184,7 @@ export default function Board() {
   }
 
   const fetchData = async () => {
-    const url = "https://task-backened-65u3.onrender.com/kanban";
+    const url = "http://localhost:3000/kanban";
     const token = Cookies.get("auth-token");
 
     if (token) {

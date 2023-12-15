@@ -9,7 +9,7 @@ function Navbar() {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
-      const url = "https://task-backened-65u3.onrender.com/kanban";
+      const url = "http://localhost:3000/kanban";
       const token = Cookies.get("auth-token");
 
       if (token) {

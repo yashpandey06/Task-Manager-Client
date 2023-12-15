@@ -9,7 +9,7 @@ function Register() {
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    const url: string = "https://task-backened-65u3.onrender.com/register";
+    const url: string = "http://localhost:3000/register";
     const data: authPayload = {
       email: email,
       password: password,
