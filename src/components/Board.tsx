@@ -25,15 +25,15 @@ export default function Board() {
     ? JSON.parse(storedDummyState)
     : [
         {
-          id: "1",
+          id: genId.toString(),
           title: "Work in Progress",
         },
         {
-          id: "2",
+          id: genId.toString(),
           title: "Tasks",
         },
         {
-          id: "3",
+          id: genId.toString(),
           title: "Done",
         },
       ];
@@ -54,7 +54,9 @@ export default function Board() {
       tasks: [],
     },
   ]);
-
+  function genId() {
+    return Math.random();
+  }
   async function handleDeleteTask(id: string, author: string) {
     try {
       const token = Cookies.get("auth-token");
@@ -69,6 +71,7 @@ export default function Board() {
       }
     } catch (err) {
       console.log(err);
+      alert(err);
     }
   }
 
@@ -238,7 +241,7 @@ export default function Board() {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="flex md:flex-row flex-col gap-16 p-5 justify-center items-center md:items-start  md:justify-between lg:fixed"
+            className="flex md:flex-row flex-col gap-10 p-5 md:p-8 justify-center items-center md:items-start  md:justify-center"
           >
             {cols.map((item, index) => (
               <div key={item.id} className="">
