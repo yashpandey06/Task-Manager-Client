@@ -241,7 +241,7 @@ export default function Board() {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="flex md:flex-row flex-col gap-10 p-5 md:p-8 justify-center items-center md:items-start  md:justify-center"
+            className="flex md:flex-row flex-col gap-16 p-5 justify-center items-center md:items-start  md:justify-between bg-red-400"
           >
             {cols.map((item, index) => (
               <div key={item.id} className="">
