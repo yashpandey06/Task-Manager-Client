@@ -25,15 +25,15 @@ export default function Board() {
     ? JSON.parse(storedDummyState)
     : [
         {
-          id: genId.toString(),
+          id: "2r2",
           title: "Work in Progress",
         },
         {
-          id: genId.toString(),
+          id: "1f",
           title: "Tasks",
         },
         {
-          id: genId.toString(),
+          id: "sx9",
           title: "Done",
         },
       ];
@@ -54,9 +54,7 @@ export default function Board() {
       tasks: [],
     },
   ]);
-  function genId() {
-    return Math.random();
-  }
+
   async function handleDeleteTask(id: string, author: string) {
     try {
       const token = Cookies.get("auth-token");
@@ -183,10 +181,6 @@ export default function Board() {
       const dummyString = JSON.stringify(newColState);
       localStorage.setItem("dummyState", dummyString);
     }
-    if (type === "cards") {
-      console.log(destination);
-      console.log(source);
-    }
   }
 
   const fetchData = async () => {
@@ -220,7 +214,7 @@ export default function Board() {
           {`Hey `}
           <strong className="text-red-500">{username}</strong>
           {cols.map((item) => (
-            <div>
+            <div key={item.id}>
               {`Currently , there are ${item.tasks.length} tasks  in `}
               <strong className="text-blue-500">{`${item.title.toUpperCase()}`}</strong>
             </div>
@@ -241,20 +235,19 @@ export default function Board() {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="flex md:flex-row flex-col gap-16 p-5 justify-center items-center md:items-start  md:justify-between bg-red-400"
+            className="flex md:flex-row flex-col gap-10 p-5 justify-center items-center md:items-start  md:justify-center"
           >
             {cols.map((item, index) => (
-              <div key={item.id} className="">
-                <Columns
-                  index={index}
-                  id={item.id}
-                  todosTopic={item.title}
-                  tasks={item.tasks}
-                  handleDeleteTask={handleDeleteTask}
-                  handleAddTask={handleAddTask}
-                  title={item.title}
-                />
-              </div>
+              <Columns
+                key={item.id}
+                index={index}
+                id={item.id}
+                todosTopic={item.title}
+                tasks={item.tasks}
+                handleDeleteTask={handleDeleteTask}
+                handleAddTask={handleAddTask}
+                title={item.title}
+              />
             ))}
             {provided.placeholder}
           </div>
