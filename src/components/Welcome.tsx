@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function Welcome() {
   return (
-    <div className="w-screen h-screen">
+    <div className="min-w-screen h-screen">
       <section className="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply min-h-full w-full">
         <div className="px-4 mx-auto text-center py-16 md:py-24 lg:py-56 relative top-[100px] md:top-0">
           <h1 className="mb-2 text-2xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-white">
