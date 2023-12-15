@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 
 function Welcome() {
   return (
-    <div className="w-screen h-screen ">
-      <section className="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply min-h-full ">
-        <div className="px-4 mx-auto  text-center py-24 lg:py-56  relative top-[100px] md:top-0">
+    <div className="bg-blue-600 w-screen h-screen ">
+      <section className="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply min-h-full w-full">
+        <div className="px-4 mx-auto  text-center py-24 lg:py-56  relative top-[100px] md:top-0 ">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
             Welcome to the your Daily Schedule
           </h1>
