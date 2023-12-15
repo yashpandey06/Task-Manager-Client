@@ -3,7 +3,7 @@ import Board from "./Board";
 
 function KanBan() {
   return (
-    <div className="h-screen w-screen min-h-screen">
+    <div className="">
       <Navbar />
       <Board />
     </div>
