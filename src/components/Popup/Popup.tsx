@@ -19,7 +19,7 @@ export default function Popup({ title, id, CloseModel }: PopupProps) {
     if (inputValue?.trim().length != 0) {
       try {
         const token = Cookies.get("auth-token");
-        const url = "http://localhost:3000/board";
+        const url = "https://task-backened-65u3.onrender.com/board";
         const payload: PayLoad = {
           id: id,
           title: title,

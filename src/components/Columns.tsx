@@ -10,7 +10,9 @@ export default function Columns({
   handleDeleteTask,
   handleAddTask,
   title,
-}) {
+
+}
+) {
   return (
     <Draggable draggableId={id.toString()} index={index}>
       {(provided) => (
