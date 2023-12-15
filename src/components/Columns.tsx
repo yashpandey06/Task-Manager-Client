@@ -12,7 +12,7 @@ interface Task {
 
 interface ColumnsProps {
   index: number;
-  id: number | string;
+  id: number|string;
   todosTopic: string;
   tasks: Task[];
   handleDeleteTask: (taskId: string, author: string) => void;
@@ -82,7 +82,7 @@ export default function Columns({
                   {provided.placeholder}
                 </div>
                 <button
-                  onClick={() => handleAddTask({ id: Number(id), title })}
+                 onClick={() => handleAddTask({ id: Number(id), title })}
                   className="bg-blue-500 rounded-full flex justify-center items-center w-10 h-10 text-white "
                 >
                   <EditIcon />

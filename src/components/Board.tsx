@@ -33,7 +33,7 @@ export default function Board() {
           title: "Tasks",
         },
         {
-          id: "",
+          id: "3",
           title: "Done",
         },
       ];
