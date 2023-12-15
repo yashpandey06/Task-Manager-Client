@@ -11,10 +11,10 @@ interface PopupProps {
   CloseModel: () => void;
 }
 export default function Popup({ title, id, CloseModel }: PopupProps) {
-  const inputRef = useRef("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   async function handleInput() {
-    const inputValue: string = inputRef.current.value;
+    const inputValue: string = inputRef.current?.value || "";
     CloseModel();
     if (inputValue?.trim().length != 0) {
       try {

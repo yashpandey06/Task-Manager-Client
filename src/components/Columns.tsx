@@ -2,6 +2,24 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 import GarbageIcon from "./icons/GarbageIcon";
 import EditIcon from "./icons/EditIcon";
 
+interface Task {
+  Task: string;
+  author: string;
+  date: string;
+  __v: number;
+  _id: number;
+}
+
+interface ColumnsProps {
+  index: number;
+  id: number | string;
+  todosTopic: string;
+  tasks: Task[];
+  handleDeleteTask: (taskId: string, author: string) => void;
+  handleAddTask: (data: { id: number; title: string }) => void;
+  title: string;
+}
+
 export default function Columns({
   index,
   id,
@@ -10,9 +28,7 @@ export default function Columns({
   handleDeleteTask,
   handleAddTask,
   title,
-
-}
-) {
+}: ColumnsProps) {
   return (
     <Draggable draggableId={id.toString()} index={index}>
       {(provided) => (
@@ -54,7 +70,7 @@ export default function Columns({
 
                           <button
                             onClick={() =>
-                              handleDeleteTask(item._id, item.author)
+                              handleDeleteTask(item._id.toString(), item.author)
                             }
                           >
                             <GarbageIcon />
@@ -66,7 +82,7 @@ export default function Columns({
                   {provided.placeholder}
                 </div>
                 <button
-                  onClick={() => handleAddTask({ id, title })}
+                  onClick={() => handleAddTask({ id: Number(id), title })}
                   className="bg-blue-500 rounded-full flex justify-center items-center w-10 h-10 text-white "
                 >
                   <EditIcon />
