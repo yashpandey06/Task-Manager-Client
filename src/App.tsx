@@ -5,7 +5,6 @@ import Register from "./components/Register";
 import Welcome from "./components/Welcome";
 
 export const App = () => {
- 
   return (
     <div className=" text-white ">
       <Routes>
